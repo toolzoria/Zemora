@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zemora - Your Digital Toolbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🛠️</span>
+                <span class="logo-text">ZEMORA</span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="tools.html">Tools</a>
+                <a href="guides.html">Guides</a>
+                <a href="blog.html">Blog</a>
+                <a href="request.html" class="request-btn">Request Tool</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Free Digital Toolbox</h1>
+                <p class="hero-subtitle">Curated tools, software, and guides for students and developers. 100% free, no ads, no subscriptions.</p>
+                <div class="hero-search">
+                    <div class="search-box">
+                        <input type="text" id="globalSearch" placeholder="Search 100+ tools, guides, and articles...">
+                        <button onclick="performSearch()">🔍 Search</button>
+                    </div>
+                    <div class="search-tags">
+                        <span class="tag">VS Code</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">OBS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Free Tools</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Guides</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Free Forever</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Browse Categories</h2>
+            <div class="category-grid">
+                <a href="tools.html?category=developer" class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>Developer Tools</h3>
+                    <p>Code editors, IDEs, Git clients</p>
+                </a>
+                <a href="tools.html?category=design" class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <h3>Design Tools</h3>
+                    <p>UI/UX, graphics, prototyping</p>
+                </a>
+                <a href="tools.html?category=windows" class="category-card">
+                    <div class="category-icon">🪟</div>
+                    <h3>Windows Utilities</h3>
+                    <p>Productivity, system tools</p>
+                </a>
+                <a href="tools.html?category=ai" class="category-card">
+                    <div class="category-icon">🤖</div>
+                    <h3>AI Tools</h3>
+                    <p>Machine learning, automation</p>
+                </a>
+                <a href="tools.html?category=security" class="category-card">
+                    <div class="category-icon">🔒</div>
+                    <h3>Security Tools</h3>
+                    <p>Privacy, encryption, VPNs</p>
+                </a>
+                <a href="tools.html?category=mobile" class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3>Mobile Apps</h3>
+                    <p>Android, iOS utilities</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tools -->
+    <section class="featured-tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Tools</h2>
+                <a href="tools.html" class="view-all">View All →</a>
+            </div>
+            <div id="featuredTools" class="tools-grid">
+                <!-- Tools loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Guides -->
+    <section class="latest-guides">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Guides</h2>
+                <a href="guides.html" class="view-all">View All →</a>
+            </div>
+            <div id="latestGuides" class="guides-grid">
+                <!-- Guides loaded via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Missing a tool?</h2>
+            <p>Request any tool you need and we'll add it to Zemora</p>
+            <a href="request.html" class="cta-button">Request a Tool →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">🛠️</span>
+                        <span class="logo-text">ZEMORA</span>
+                    </a>
+                    <p class="footer-tagline">Your free digital toolbox for students and developers.</p>
+                    <div class="footer-links">
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="tools.html?category=developer">Developer Tools</a>
+                    <a href="tools.html?category=design">Design Tools</a>
+                    <a href="tools.html?category=windows">Windows Utilities</a>
+                    <a href="tools.html?category=ai">AI Tools</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="guides.html">Installation Guides</a>
+                    <a href="blog.html">Tech Blog</a>
+                    <a href="request.html">Request Tool</a>
+                    <a href="/admin/index.html" style="color: #0ea5e9;">Admin Panel</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <p>Hosted on Cloudflare Pages</p>
+                    <p>Open Source on GitHub</p>
+                    <p>No Tracking · No Ads</p>
+                    <p>Updated Weekly</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Zemora. All tools are free and open-source when possible.</p>
+                <p class="footer-note">CEO Muhammad Khuhro</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

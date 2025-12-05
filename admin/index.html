@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zemora Admin</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #0f172a; 
+            color: white;
+            padding: 20px;
+        }
+        .admin-container { max-width: 800px; margin: 0 auto; }
+        .admin-header { 
+            background: #1e293b; 
+            padding: 20px; 
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .admin-section { 
+            background: #1e293b; 
+            padding: 20px; 
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            background: #334155; 
+            border: 1px solid #475569; 
+            color: white;
+            border-radius: 5px;
+        }
+        button { 
+            background: #0ea5e9; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Simple password protection
+        const password = prompt('Enter admin password:');
+        if (password !== 'zemora123') {
+            alert('Access denied');
+            window.location.href = '/';
+        }
+    </script>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Zemora Admin Panel</h1>
+            <p>Manage your content here</p>
+        </div>
+        
+        <div class="admin-section">
+            <h2>Add New Tool</h2>
+            <input type="text" id="toolName" placeholder="Tool Name">
+            <input type="text" id="toolCategory" placeholder="Category">
+            <textarea id="toolDesc" placeholder="Description"></textarea>
+            <input type="text" id="toolLink" placeholder="Download URL">
+            <button onclick="addTool()">Add Tool</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/admin.js"></script>
+</body>
+</html>
