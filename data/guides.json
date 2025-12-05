@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Install Visual Studio Code on Windows, macOS, and Linux",
+    "slug": "install-vscode",
+    "excerpt": "Step-by-step VS Code install with extensions, Git integration, and shell setup.",
+    "content": "1) Download VS Code from the official site.\n2) Enable shell integration during install.\n3) Install key extensions: GitLens, ESLint, Prettier.\n4) Set the default formatter to Prettier and enable format on save.\n5) Configure integrated Git and sync settings."
+  },
+  {
+    "id": 2,
+    "title": "Set up Git and GitHub with SSH",
+    "slug": "git-github-ssh",
+    "excerpt": "Generate SSH keys, add them to GitHub, and verify secure pushes.",
+    "content": "1) Generate a new SSH key: ssh-keygen -t ed25519 -C \"you@example.com\".\n2) Add the public key to GitHub: Settings → SSH and GPG keys.\n3) Test with: ssh -T git@github.com.\n4) Configure Git username/email and default branch: git config --global init.defaultBranch main.\n5) Clone via SSH and push a test commit."
+  },
+  {
+    "id": 3,
+    "title": "Install Python 3 and pip on Windows",
+    "slug": "install-python-windows",
+    "excerpt": "Clean Python install with PATH setup, pip, and venv for isolated projects.",
+    "content": "1) Download Python 3 from python.org; tick \"Add Python to PATH\".\n2) Verify: python --version, pip --version.\n3) Create a virtual env: python -m venv .venv; activate: .venv\\Scripts\\activate.\n4) Upgrade pip: python -m pip install --upgrade pip.\n5) Install packages with requirements.txt and freeze with pip freeze > requirements.txt."
+  }
+]
+

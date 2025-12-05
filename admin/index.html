@@ -5,69 +5,396 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zemora Admin</title>
     <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --muted: #1f2937;
+            --accent: #0ea5e9;
+            --text: #e5e7eb;
+            --text-muted: #9ca3af;
+            --danger: #ef4444;
+            --success: #22c55e;
+            --radius: 12px;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            background: #0f172a; 
-            color: white;
+        body {
+            font-family: "Inter", "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #0b1020);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 32px;
+        }
+        a { color: var(--accent); }
+        .admin-shell {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        .sidebar {
+            width: 260px;
+            background: var(--panel);
+            border: 1px solid #1f2937;
+            border-radius: var(--radius);
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+        .logo span { font-size: 20px; }
+        .sidebar .small { color: var(--text-muted); margin-top: 6px; font-size: 14px; }
+        .nav-section { margin-top: 24px; }
+        .nav-section h4 { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .nav-buttons button {
+            width: 100%;
+            background: var(--muted);
+            border: 1px solid #1f2937;
+            color: var(--text);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: transform 0.05s ease, border 0.1s ease;
+        }
+        .nav-buttons button.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 1px rgba(14,165,233,0.25);
+        }
+        .nav-buttons button:hover { transform: translateY(-1px); }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .panel {
+            background: var(--panel);
+            border: 1px solid #1f2937;
+            border-radius: var(--radius);
             padding: 20px;
         }
-        .admin-container { max-width: 800px; margin: 0 auto; }
-        .admin-header { 
-            background: #1e293b; 
-            padding: 20px; 
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .panel-header h2 { font-size: 20px; }
+        .badge { background: rgba(14,165,233,0.15); color: var(--accent); padding: 4px 8px; border-radius: 999px; font-size: 12px; }
+        .grid {
+            display: grid;
+            gap: 16px;
+        }
+        .grid.stats { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .stat-card {
+            background: var(--muted);
+            padding: 16px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            border: 1px solid #1f2937;
         }
-        .admin-section { 
-            background: #1e293b; 
-            padding: 20px; 
+        .stat-label { color: var(--text-muted); font-size: 13px; }
+        .stat-value { font-size: 24px; margin-top: 6px; }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        input, textarea, select {
+            width: 100%;
+            background: #0b1220;
+            border: 1px solid #1f2937;
+            color: var(--text);
+            padding: 12px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            font-size: 14px;
         }
-        input, textarea { 
-            width: 100%; 
-            padding: 10px; 
-            margin: 10px 0; 
-            background: #334155; 
-            border: 1px solid #475569; 
-            color: white;
-            border-radius: 5px;
-        }
-        button { 
-            background: #0ea5e9; 
-            color: white; 
-            padding: 10px 20px; 
-            border: none; 
-            border-radius: 5px; 
+        textarea { min-height: 90px; resize: vertical; }
+        label { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 6px; }
+        .row { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { padding: 10px; border-bottom: 1px solid #1f2937; text-align: left; font-size: 14px; }
+        th { color: var(--text-muted); font-weight: 600; }
+        .actions { display: flex; gap: 8px; }
+        .btn {
+            background: var(--muted);
+            color: var(--text);
+            border: 1px solid #1f2937;
+            padding: 10px 14px;
+            border-radius: 10px;
             cursor: pointer;
+            transition: transform 0.05s ease, border 0.1s ease;
+        }
+        .btn.primary { background: var(--accent); color: #0b1220; border-color: rgba(14,165,233,0.5); }
+        .btn.danger { background: rgba(239,68,68,0.12); color: #fecdd3; border-color: rgba(239,68,68,0.3); }
+        .btn.success { background: rgba(34,197,94,0.15); color: #bbf7d0; border-color: rgba(34,197,94,0.3); }
+        .btn:hover { transform: translateY(-1px); }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            background: #0b1220;
+            border: 1px solid #1f2937;
+            padding: 4px 8px;
+            border-radius: 8px;
+            margin: 0 6px 6px 0;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .notice {
+            background: rgba(14,165,233,0.08);
+            border: 1px dashed rgba(14,165,233,0.4);
+            color: var(--text);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+        .status-bar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .hidden { display: none !important; }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #0b1220;
+            border: 1px solid #1f2937;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: inline-block; }
+        .inline { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .file-input { position: relative; overflow: hidden; }
+        .file-input input { position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; }
+        @media (max-width: 980px) {
+            .admin-shell { flex-direction: column; }
+            .sidebar { position: relative; width: 100%; }
         }
     </style>
 </head>
 <body>
-    <script>
-        // Simple password protection
-        const password = prompt('Enter admin password:');
-        if (password !== 'zemora123') {
-            alert('Access denied');
-            window.location.href = '/';
-        }
-    </script>
+    <div class="admin-shell">
+        <aside class="sidebar">
+            <div class="logo">
+                <span>🛠️</span>
+                <div>
+                    <div>Zemora Admin</div>
+                    <div class="small">Content Manager</div>
+                </div>
+            </div>
+            <div class="nav-section">
+                <h4>Datasets</h4>
+                <div class="nav-buttons">
+                    <button class="active" data-section="tools">Tools</button>
+                    <button data-section="guides">Guides</button>
+                    <button data-section="blog">Blog</button>
+                </div>
+            </div>
+            <div class="nav-section">
+                <h4>Session</h4>
+                <div class="inline" style="margin-top:8px;">
+                    <span class="pill"><span class="status-dot"></span> Client-side only</span>
+                    <button class="btn" id="logoutBtn">Logout</button>
+                </div>
+                <p class="small" style="margin-top:8px;">Changes are stored in your browser and can be exported as JSON. Deploy backend APIs to persist server-side.</p>
+            </div>
+        </aside>
 
-    <div class="admin-container">
-        <div class="admin-header">
-            <h1>Zemora Admin Panel</h1>
-            <p>Manage your content here</p>
-        </div>
-        
-        <div class="admin-section">
-            <h2>Add New Tool</h2>
-            <input type="text" id="toolName" placeholder="Tool Name">
-            <input type="text" id="toolCategory" placeholder="Category">
-            <textarea id="toolDesc" placeholder="Description"></textarea>
-            <input type="text" id="toolLink" placeholder="Download URL">
-            <button onclick="addTool()">Add Tool</button>
-        </div>
+        <main class="content">
+            <div class="panel" id="authPanel">
+                <div class="panel-header">
+                    <h2>Login</h2>
+                    <span class="badge">Local only</span>
+                </div>
+                <p class="notice">This is a static admin panel. Password check happens in the browser. For real security, gate behind server-side auth.</p>
+                <div class="row" style="margin-top:12px;">
+                    <div>
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" placeholder="Enter admin password">
+                    </div>
+                    <div style="align-self:flex-end;">
+                        <button class="btn primary" id="loginBtn">Login</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="dashboardPanel">
+                <div class="panel-header">
+                    <h2>Overview</h2>
+                    <div class="inline">
+                        <span class="badge">Live session</span>
+                        <span class="pill" id="syncStatus"><span class="status-dot"></span> Sync: ready</span>
+                        <button class="btn" id="forceRefresh">Pull latest</button>
+                    </div>
+                </div>
+                <div class="grid stats">
+                    <div class="stat-card">
+                        <div class="stat-label">Tools</div>
+                        <div class="stat-value" id="statTools">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Guides</div>
+                        <div class="stat-value" id="statGuides">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Blog posts</div>
+                        <div class="stat-value" id="statBlog">0</div>
+                    </div>
+                </div>
+                <div class="controls" style="margin-top:16px;">
+                    <div class="inline">
+                        <label style="margin:0;">Import</label>
+                        <div class="file-input btn">
+                            <input type="file" id="importFile" accept=".json">
+                            Choose JSON
+                        </div>
+                        <select id="importTarget">
+                            <option value="tools">Tools</option>
+                            <option value="guides">Guides</option>
+                            <option value="blog">Blog</option>
+                        </select>
+                        <button class="btn success" id="exportBtn">Export current dataset</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="toolsPanel" data-section-panel="tools">
+                <div class="panel-header">
+                    <h2>Tools</h2>
+                    <div class="inline">
+                        <input type="search" id="toolsSearch" placeholder="Search by name, tag, platform...">
+                        <button class="btn" id="toolsReset">Reset</button>
+                    </div>
+                </div>
+                <div id="toolsTable"></div>
+                <div style="margin-top:16px;">
+                    <h3 style="margin-bottom:8px;">Add / Edit Tool</h3>
+                    <div class="row">
+                        <div>
+                            <label>Name</label>
+                            <input id="toolName" placeholder="Visual Studio Code">
+                        </div>
+                        <div>
+                            <label>Category</label>
+                            <select id="toolCategory">
+                                <option value="developer">Developer</option>
+                                <option value="design">Design</option>
+                                <option value="windows">Windows</option>
+                                <option value="ai">AI</option>
+                                <option value="security">Security</option>
+                                <option value="mobile">Mobile</option>
+                                <option value="productivity">Productivity</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Platforms (comma separated)</label>
+                            <input id="toolPlatforms" placeholder="Windows, macOS, Linux">
+                        </div>
+                        <div>
+                            <label>Tags (comma separated)</label>
+                            <input id="toolTags" placeholder="editor, javascript, extensions">
+                        </div>
+                        <div>
+                            <label>Difficulty</label>
+                            <input id="toolDifficulty" placeholder="Beginner">
+                        </div>
+                        <div>
+                            <label>License</label>
+                            <input id="toolLicense" placeholder="MIT">
+                        </div>
+                        <div>
+                            <label>Icon (emoji or text)</label>
+                            <input id="toolIcon" placeholder="💻">
+                        </div>
+                        <div>
+                            <label>Download URL</label>
+                            <input id="toolDownload" placeholder="https://example.com">
+                        </div>
+                    </div>
+                    <label>Description</label>
+                    <textarea id="toolDescription" placeholder="Short description"></textarea>
+                    <label><input type="checkbox" id="toolFeatured" style="width:auto; margin-right:6px;"> Featured</label>
+                    <div class="inline" style="margin-top:12px;">
+                        <button class="btn primary" id="saveToolBtn">Save Tool</button>
+                        <button class="btn" id="cancelToolEdit" data-mode="create">Cancel</button>
+                        <span class="pill" id="toolModePill">Mode: create</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="guidesPanel" data-section-panel="guides">
+                <div class="panel-header">
+                    <h2>Guides</h2>
+                    <div class="inline">
+                        <input type="search" id="guidesSearch" placeholder="Search guides">
+                        <button class="btn" id="guidesReset">Reset</button>
+                    </div>
+                </div>
+                <div id="guidesTable"></div>
+                <div style="margin-top:16px;">
+                    <h3 style="margin-bottom:8px;">Add / Edit Guide</h3>
+                    <div class="row">
+                        <div>
+                            <label>Title</label>
+                            <input id="guideTitle" placeholder="Install VS Code">
+                        </div>
+                        <div>
+                            <label>Slug</label>
+                            <input id="guideSlug" placeholder="install-vscode">
+                        </div>
+                    </div>
+                    <label>Excerpt</label>
+                    <textarea id="guideExcerpt" placeholder="Short summary"></textarea>
+                    <label>Content</label>
+                    <textarea id="guideContent" placeholder="Full guide content"></textarea>
+                    <div class="inline" style="margin-top:12px;">
+                        <button class="btn primary" id="saveGuideBtn">Save Guide</button>
+                        <button class="btn" id="cancelGuideEdit" data-mode="create">Cancel</button>
+                        <span class="pill" id="guideModePill">Mode: create</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel hidden" id="blogPanel" data-section-panel="blog">
+                <div class="panel-header">
+                    <h2>Blog</h2>
+                    <div class="inline">
+                        <input type="search" id="blogSearch" placeholder="Search blog">
+                        <button class="btn" id="blogReset">Reset</button>
+                    </div>
+                </div>
+                <div id="blogTable"></div>
+                <div style="margin-top:16px;">
+                    <h3 style="margin-bottom:8px;">Add / Edit Post</h3>
+                    <div class="row">
+                        <div>
+                            <label>Title</label>
+                            <input id="blogTitle" placeholder="Why open source matters">
+                        </div>
+                        <div>
+                            <label>Slug</label>
+                            <input id="blogSlug" placeholder="why-open-source-matters">
+                        </div>
+                    </div>
+                    <label>Excerpt</label>
+                    <textarea id="blogExcerpt" placeholder="Short preview"></textarea>
+                    <label>Content</label>
+                    <textarea id="blogContent" placeholder="Full article"></textarea>
+                    <div class="inline" style="margin-top:12px;">
+                        <button class="btn primary" id="saveBlogBtn">Save Post</button>
+                        <button class="btn" id="cancelBlogEdit" data-mode="create">Cancel</button>
+                        <span class="pill" id="blogModePill">Mode: create</span>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="../assets/js/admin.js"></script>

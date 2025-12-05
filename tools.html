@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tools - Zemora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <style>
+        .tools-header {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+        
+        .tools-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            align-items: center;
+        }
+        
+        .tools-search {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .tools-search input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0 2rem;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+        
+        .tools-stats {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .tool-meta {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .tool-difficulty,
+        .tool-license {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                <span class="logo-text">ZEMORA</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="tools.html" class="active">Tools</a>
+                <a href="guides.html">Guides</a>
+                <a href="blog.html">Blog</a>
+                <a href="request.html" class="request-btn">Request Tool</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="tools-header">
+        <div class="container">
+            <h1>All Tools</h1>
+            <p>Browse our collection of free tools and software for developers and students</p>
+            
+            <div class="tools-controls">
+                <div class="tools-search">
+                    <input type="text" id="toolsSearch" placeholder="Search tools by name, description, or tag...">
+                </div>
+                <button id="clearFilters" class="category-btn">Clear Filters</button>
+            </div>
+            
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All Tools</button>
+                <button class="category-btn" data-category="developer">💻 Developer</button>
+                <button class="category-btn" data-category="design">🎨 Design</button>
+                <button class="category-btn" data-category="windows">🪟 Windows</button>
+                <button class="category-btn" data-category="ai">🤖 AI</button>
+                <button class="category-btn" data-category="security">🔒 Security</button>
+                <button class="category-btn" data-category="mobile">📱 Mobile</button>
+                <button class="category-btn" data-category="productivity">⚡ Productivity</button>
+            </div>
+            
+            <div class="tools-stats">
+                Showing <span id="toolsCount">0</span> tools
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-tools">
+        <div class="container">
+            <div id="toolsContainer" class="tools-grid">
+                <!-- Tools will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="/" class="logo">
+                        <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                        <span class="logo-text">ZEMORA</span>
+                    </a>
+                    <p class="footer-tagline">Your free digital toolbox for students and developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="tools.html?category=developer">Developer Tools</a>
+                    <a href="tools.html?category=design">Design Tools</a>
+                    <a href="tools.html?category=windows">Windows Utilities</a>
+                    <a href="tools.html?category=ai">AI Tools</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="guides.html">Installation Guides</a>
+                    <a href="blog.html">Tech Blog</a>
+                    <a href="request.html">Request Tool</a>
+                    <a href="/admin/index.html" style="color: #0ea5e9;">Admin Panel</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <p>Hosted on Cloudflare Pages</p>
+                    <p>Open Source on GitHub</p>
+                    <p>No Tracking · No Ads</p>
+                    <p>Updated Weekly</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Zemora. All tools are free and open-source when possible.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/tools.js"></script>
+</body>
+</html>

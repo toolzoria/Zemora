@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Zemora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                <span class="logo-text">ZEMORA</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="tools.html">Tools</a>
+                <a href="guides.html">Guides</a>
+                <a href="blog.html">Blog</a>
+                <a href="request.html" class="request-btn">Request Tool</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 4rem 0 2rem;">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Contact Zemora</h1>
+                <p class="hero-subtitle">Questions, feedback, partnership ideas, or just want to say hi? We’d love to hear from you.</p>
+                <div class="hero-stats" style="grid-template-columns: repeat(auto-fit, minmax(180px,1fr));">
+                    <div class="stat">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Average reply</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free support</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">20k+</div>
+                        <div class="stat-label">Monthly users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-tools" style="padding-top:0;">
+        <div class="container contact-grid">
+            <div class="contact-card">
+                <h2>Send us a message</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">We respond quickly. Include as much detail as you can.</p>
+                <form id="contactForm" class="stacked-form">
+                    <label>Full Name</label>
+                    <input type="text" id="contactName" placeholder="Your name" required>
+                    <label>Email</label>
+                    <input type="email" id="contactEmail" placeholder="you@example.com" required>
+                    <label>Topic</label>
+                    <select id="contactTopic">
+                        <option>General question</option>
+                        <option>Tool request follow-up</option>
+                        <option>Partnership</option>
+                        <option>Bug report</option>
+                    </select>
+                    <label>Message</label>
+                    <textarea id="contactMessage" rows="5" placeholder="How can we help?" required></textarea>
+                    <button type="submit" class="cta-button">Send message →</button>
+                    <p id="contactStatus" class="status-text" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div class="contact-card alt">
+                <h2>Other ways to reach us</h2>
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> hello@zemora.dev</li>
+                    <li><strong>Support:</strong> support@zemora.dev</li>
+                    <li><strong>Twitter:</strong> @tryzemora</li>
+                    <li><strong>GitHub:</strong> github.com/zemora</li>
+                </ul>
+                <div class="notice">
+                    We don’t track or sell data. Your message is encrypted in transit. 🚀
+                </div>
+                <div class="mini-panels">
+                    <div class="mini-panel">
+                        <div class="mini-title">Status</div>
+                        <div class="mini-value">All systems operational</div>
+                    </div>
+                    <div class="mini-panel">
+                        <div class="mini-title">Response time</div>
+                        <div class="mini-value">Under 24 hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="/" class="logo">
+                        <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                        <span class="logo-text">ZEMORA</span>
+                    </a>
+                    <p class="footer-tagline">Your free digital toolbox for students and developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="tools.html?category=developer">Developer Tools</a>
+                    <a href="tools.html?category=design">Design Tools</a>
+                    <a href="tools.html?category=windows">Windows Utilities</a>
+                    <a href="tools.html?category=ai">AI Tools</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="guides.html">Installation Guides</a>
+                    <a href="blog.html">Tech Blog</a>
+                    <a href="request.html">Request Tool</a>
+                    <a href="/admin/index.html" style="color: #0ea5e9;">Admin Panel</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <p>Hosted on Cloudflare Pages</p>
+                    <p>Open Source on GitHub</p>
+                    <p>No Tracking · No Ads</p>
+                    <p>Updated Weekly</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Zemora. All tools are free and open-source when possible.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        const form = document.getElementById('contactForm');
+        const statusEl = document.getElementById('contactStatus');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            statusEl.textContent = 'Sending...';
+            setTimeout(() => {
+                statusEl.textContent = 'Message sent! We’ll get back within 24 hours.';
+                form.reset();
+            }, 700);
+        });
+    </script>
+</body>
+</html>
+

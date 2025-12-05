@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides - Zemora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                <span class="logo-text">ZEMORA</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="tools.html">Tools</a>
+                <a href="guides.html" class="active">Guides</a>
+                <a href="blog.html">Blog</a>
+                <a href="request.html" class="request-btn">Request Tool</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 4rem 0 2rem;">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Step-by-step guides</h1>
+                <p class="hero-subtitle">Install, configure, and master the tools you love — with screenshots and copy-paste commands.</p>
+                <div class="hero-search" style="max-width:720px; margin-top:1.5rem;">
+                    <div class="search-box">
+                        <input type="text" id="guidesSearch" placeholder="Search guides by title or keyword...">
+                        <button id="guidesSearchBtn">🔍 Search</button>
+                    </div>
+                    <div class="search-tags">
+                        <span class="tag guide-tag">VS Code</span>
+                        <span class="tag guide-tag">Git</span>
+                        <span class="tag guide-tag">Python</span>
+                        <span class="tag guide-tag">Node</span>
+                        <span class="tag guide-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-tools" style="padding-top:0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">All Guides</h2>
+                <div class="inline">
+                    <span id="guidesCount" class="pill" style="background: var(--bg-tertiary); color: var(--text-secondary);">0 guides</span>
+                    <button class="view-all" id="guidesClear">Clear</button>
+                </div>
+            </div>
+            <div id="guidesContainer" class="guides-grid">
+                <!-- Guides loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="/" class="logo">
+                        <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                        <span class="logo-text">ZEMORA</span>
+                    </a>
+                    <p class="footer-tagline">Your free digital toolbox for students and developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="tools.html?category=developer">Developer Tools</a>
+                    <a href="tools.html?category=design">Design Tools</a>
+                    <a href="tools.html?category=windows">Windows Utilities</a>
+                    <a href="tools.html?category=ai">AI Tools</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="guides.html">Installation Guides</a>
+                    <a href="blog.html">Tech Blog</a>
+                    <a href="request.html">Request Tool</a>
+                    <a href="/admin/index.html" style="color: #0ea5e9;">Admin Panel</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <p>Hosted on Cloudflare Pages</p>
+                    <p>Open Source on GitHub</p>
+                    <p>No Tracking · No Ads</p>
+                    <p>Updated Weekly</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Zemora. All tools are free and open-source when possible.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/guides.js"></script>
+</body>
+</html>
+

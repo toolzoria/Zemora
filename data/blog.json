@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "title": "7 free tools every student developer should install first",
+    "slug": "student-dev-starter-pack",
+    "excerpt": "Our curated starter stack: editor, Git, design, API testing, and note-taking — all free.",
+    "content": "We picked VS Code, Git, Figma, Postman, Notion, Obsidian, and 7-Zip. Each is free, cross-platform, and safe to install. Learn why they matter and how to configure them quickly.",
+    "category": "Productivity",
+    "tags": ["starter", "students", "productivity"],
+    "date": "2024-07-02"
+  },
+  {
+    "id": 2,
+    "title": "Stop downloading from shady mirrors: safer software installs",
+    "slug": "safe-downloads",
+    "excerpt": "How to avoid bundled adware and verify installers with hashes and vendor links.",
+    "content": "Always download from official vendor pages, verify checksums when provided, and avoid third-party mirror sites with aggressive ads. We outline a quick checklist to stay safe on Windows and macOS.",
+    "category": "Security",
+    "tags": ["security", "windows", "safety"],
+    "date": "2024-06-18"
+  },
+  {
+    "id": 3,
+    "title": "Lightweight tools that run on low-spec laptops",
+    "slug": "lightweight-tools",
+    "excerpt": "Great picks for old hardware: code, design, compression, and recording tools that stay fast.",
+    "content": "Krita, VS Code, 7-Zip, Audacity, and Obsidian perform well on modest machines. We share tips to trim extensions, disable heavy telemetry, and keep boot times quick.",
+    "category": "Performance",
+    "tags": ["lightweight", "performance", "windows", "mac"],
+    "date": "2024-05-30"
+  }
+]
+

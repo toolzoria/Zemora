@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Tool - Zemora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                <span class="logo-text">ZEMORA</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="tools.html">Tools</a>
+                <a href="guides.html">Guides</a>
+                <a href="blog.html">Blog</a>
+                <a href="request.html" class="request-btn active">Request Tool</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero" style="padding: 4rem 0 2rem;">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Request any tool — for free</h1>
+                <p class="hero-subtitle">Tell us what you need. We add student- and dev-friendly tools weekly.</p>
+                <div class="hero-stats" style="grid-template-columns: repeat(auto-fit, minmax(180px,1fr));">
+                    <div class="stat">
+                        <div class="stat-number">48h</div>
+                        <div class="stat-label">Typical turnaround</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Free to request</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">+5</div>
+                        <div class="stat-label">New tools weekly</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-tools" style="padding-top:0;">
+        <div class="container contact-grid">
+            <div class="contact-card">
+                <h2>Submit a request</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Add details so we can vet and publish your tool quickly.</p>
+                <form id="requestForm" class="stacked-form">
+                    <label>Tool Name</label>
+                    <input type="text" id="reqName" placeholder="e.g., Postman, Blender" required>
+                    <label>Category</label>
+                    <select id="reqCategory">
+                        <option>Developer</option>
+                        <option>Design</option>
+                        <option>AI</option>
+                        <option>Windows</option>
+                        <option>Security</option>
+                        <option>Mobile</option>
+                        <option>Productivity</option>
+                    </select>
+                    <label>Platform(s)</label>
+                    <input type="text" id="reqPlatforms" placeholder="Windows, macOS, Linux, Web" required>
+                    <label>Why do you recommend it?</label>
+                    <textarea id="reqReason" rows="4" placeholder="Share why it’s great or what problem it solves" required></textarea>
+                    <label>Official link</label>
+                    <input type="url" id="reqLink" placeholder="https://example.com" required>
+                    <label>Your email (optional)</label>
+                    <input type="email" id="reqEmail" placeholder="you@example.com">
+                    <button type="submit" class="cta-button">Send request →</button>
+                    <p id="reqStatus" class="status-text" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <div class="contact-card alt">
+                <h2>What happens next?</h2>
+                <ol class="checklist">
+                    <li>We review and verify the tool.</li>
+                    <li>We add tags, platforms, and difficulty labels.</li>
+                    <li>We publish it to Zemora and notify you.</li>
+                </ol>
+                <div class="notice">
+                    We only list free or open-source tools, or generous student plans. No adware. No bundles. No data brokers.
+                </div>
+                <div class="mini-panels">
+                    <div class="mini-panel">
+                        <div class="mini-title">Curation</div>
+                        <div class="mini-value">Human + vetted sources</div>
+                    </div>
+                    <div class="mini-panel">
+                        <div class="mini-title">Transparency</div>
+                        <div class="mini-value">Clear license + links</div>
+                    </div>
+                    <div class="mini-panel">
+                        <div class="mini-title">Security</div>
+                        <div class="mini-value">Direct vendor downloads</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="/" class="logo">
+                        <img src="assets/images/logo.svg" alt="Zemora" class="logo-mark">
+                        <span class="logo-text">ZEMORA</span>
+                    </a>
+                    <p class="footer-tagline">Your free digital toolbox for students and developers.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <a href="tools.html?category=developer">Developer Tools</a>
+                    <a href="tools.html?category=design">Design Tools</a>
+                    <a href="tools.html?category=windows">Windows Utilities</a>
+                    <a href="tools.html?category=ai">AI Tools</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="guides.html">Installation Guides</a>
+                    <a href="blog.html">Tech Blog</a>
+                    <a href="request.html">Request Tool</a>
+                    <a href="/admin/index.html" style="color: #0ea5e9;">Admin Panel</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <p>Hosted on Cloudflare Pages</p>
+                    <p>Open Source on GitHub</p>
+                    <p>No Tracking · No Ads</p>
+                    <p>Updated Weekly</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Zemora. All tools are free and open-source when possible.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        const reqForm = document.getElementById('requestForm');
+        const reqStatus = document.getElementById('reqStatus');
+        reqForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            reqStatus.textContent = 'Submitting...';
+            setTimeout(() => {
+                reqStatus.textContent = 'Thanks! Your request has been logged. We’ll review it soon.';
+                reqForm.reset();
+            }, 800);
+        });
+    </script>
+</body>
+</html>
+
